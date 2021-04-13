@@ -1,10 +1,19 @@
 import React, { ChangeEvent, FormEvent, Fragment, useState } from "react";
 import Error from "./Error";
 
-export interface BudgetDefinitionProps {}
+export interface BudgetDefinitionProps {
+  setBudget: Function;
+  setRemaining: Function;
+}
 
-const BudgetDefinition: React.FC<BudgetDefinitionProps> = () => {
-
+/**
+ * Component to set a budget
+ * @returns A Fragment containing the layout
+ */
+const BudgetDefinition: React.FC<BudgetDefinitionProps> = ({
+  setBudget,
+  setRemaining,
+}) => {
   // Define budget definition state
   const [amount, setAmount] = useState(0);
   const [error, setError] = useState(false);
@@ -15,7 +24,7 @@ const BudgetDefinition: React.FC<BudgetDefinitionProps> = () => {
    */
   const onChangeBudget = (e: ChangeEvent<HTMLInputElement>) => {
     setAmount(parseInt(e.target.value, 10) || 0);
-  }
+  };
 
   /**
    *
@@ -32,13 +41,15 @@ const BudgetDefinition: React.FC<BudgetDefinitionProps> = () => {
     }
 
     setError(false);
-  }
+    setBudget(amount);
+    setRemaining(amount);
+  };
 
   return (
     <Fragment>
       <h2>Set your budget</h2>
 
-      { error && <Error message="Amount is incorrect" />}
+      {error && <Error message="Amount is incorrect" />}
 
       <form onSubmit={onSubmitBudget}>
         <input
