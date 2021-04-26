@@ -27,8 +27,8 @@ const BudgetDefinition: React.FC<BudgetDefinitionProps> = ({
   };
 
   /**
-   *
-   * @param e
+   * Form submit event
+   * @param e FormEvent
    * @returns
    */
   const onSubmitBudget = (e: FormEvent<HTMLFormElement>) => {

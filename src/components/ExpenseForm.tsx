@@ -1,10 +1,17 @@
 import React, { FormEvent, useState } from "react";
 import shortid from "shortid";
+import { Expense } from "../types";
 import Error from "./Error";
 
-export interface ExpenseFormProps {}
+export interface ExpenseFormProps {
+    addNewExpense: Function
+}
 
-const ExpenseForm: React.FC<ExpenseFormProps> = () => {
+/**
+ * This component represents a form to add new expenses to list
+ * @returns \<form>
+ */
+const ExpenseForm: React.FC<ExpenseFormProps> = ({addNewExpense}) => {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState(0);
   const [error, setError] = useState(false);
@@ -21,14 +28,19 @@ const ExpenseForm: React.FC<ExpenseFormProps> = () => {
     }
 
     //Build expense object
-    const expense = {
+    const expense: Expense = {
+        id: shortid.generate(),
         name,
-        amount,
-        id: shortid.generate()
+        amount
     }
     console.log(expense);
 
-    //Reset errors
+    //Add expense to list
+    addNewExpense(expense);
+
+    //Reset form
+    setName('');
+    setAmount(0);
     setError(false);
   };
 

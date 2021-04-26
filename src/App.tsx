@@ -1,10 +1,23 @@
 import React, { useState } from "react";
 import BudgetDefinition from "./components/BudgetDefinition";
 import ExpenseForm from "./components/ExpenseForm";
+import { Expense } from "./types";
 
 function App() {
   const [budget, setBudget] = useState(0);
   const [remaining, setRemaining] = useState(0);
+  const [expenses, setExpenses] = useState<Expense[]>([]);
+
+  /**
+   * Add expense to list
+   * @param expense Expense to add
+   */
+  const addExpense = (expense: Expense) => {
+    setExpenses([
+      ...expenses,
+      expense
+    ]);
+  };
 
   return (
     <div className="container">
@@ -20,7 +33,7 @@ function App() {
           ) : (
             <div className="row">
               <div className="one-half column">
-                <ExpenseForm />
+                <ExpenseForm addNewExpense={addExpense} />
               </div>
               <div className="one-half column">2</div>
             </div>
