@@ -1,5 +1,5 @@
-import { stringify } from "node:querystring";
 import React, { FormEvent, useState } from "react";
+import shortid from "shortid";
 import Error from "./Error";
 
 export interface ExpenseFormProps {}
@@ -20,6 +20,15 @@ const ExpenseForm: React.FC<ExpenseFormProps> = () => {
       return;
     }
 
+    //Build expense object
+    const expense = {
+        name,
+        amount,
+        id: shortid.generate()
+    }
+    console.log(expense);
+
+    //Reset errors
     setError(false);
   };
 
