@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import BudgetDefinition from "./components/BudgetDefinition";
 import ExpenseForm from "./components/ExpenseForm";
+import ExpenseList from "./components/ExpenseList";
 import { Expense } from "./types";
 
 function App() {
@@ -13,10 +14,7 @@ function App() {
    * @param expense Expense to add
    */
   const addExpense = (expense: Expense) => {
-    setExpenses([
-      ...expenses,
-      expense
-    ]);
+    setExpenses([...expenses, expense]);
   };
 
   return (
@@ -35,7 +33,9 @@ function App() {
               <div className="one-half column">
                 <ExpenseForm addNewExpense={addExpense} />
               </div>
-              <div className="one-half column">2</div>
+              <div className="one-half column">
+                <ExpenseList expenses={expenses} />
+              </div>
             </div>
           )}
         </div>
