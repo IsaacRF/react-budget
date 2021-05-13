@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import BudgetControl from "./components/BudgetControl";
 import BudgetDefinition from "./components/BudgetDefinition";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
@@ -15,6 +16,7 @@ function App() {
    */
   const addExpense = (expense: Expense) => {
     setExpenses([...expenses, expense]);
+    setRemaining(remaining - expense.amount);
   };
 
   return (
@@ -35,6 +37,8 @@ function App() {
               </div>
               <div className="one-half column">
                 <ExpenseList expenses={expenses} />
+
+                <BudgetControl budget={budget} remaining={remaining} />
               </div>
             </div>
           )}
