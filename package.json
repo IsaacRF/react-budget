@@ -1,5 +1,6 @@
 {
   "name": "react-budget",
+  "homepage": "http://isaacrf.com/apps/react-budget/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
