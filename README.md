@@ -1,6 +1,12 @@
-# Getting Started with Create React App
+# React Budget Control Test Project
+
+This project is intended to serve as a base for learning some React principles as seen in the course [React - The Complete Guide](https://www.udemy.com/course/react-de-principiante-a-experto-creando-mas-de-10-aplicaciones/learn/lecture/17684114).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Live Demo: http://isaacrf.com/apps/react-budget/
+
+![react-budget-demo](https://user-images.githubusercontent.com/2803925/118453792-e92ab680-b6f7-11eb-9eba-aa9bd5c91f3c.gif)
 
 ## Available Scripts
 
